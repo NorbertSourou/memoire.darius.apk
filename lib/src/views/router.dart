@@ -9,7 +9,8 @@ class Routers {
 
       default:
         return MaterialPageRoute(
-            builder: (_) => Scaffold(
+            builder: (_) =>
+                Scaffold(
                   body: Center(
                     child: Text('No route defined for ${settings.name}'),
                   ),

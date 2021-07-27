@@ -21,6 +21,14 @@ class _LoginScreenState extends State<LoginScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Container(
+                alignment: Alignment.center,
+                child: Image.asset(
+                  'assets/loginlogo.png',
+                  width: 250,
+                  alignment: Alignment.centerRight,
+                ),
+              ),
               Text(
                 "Welcome Dr.",
                 style: TextStyle(

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:memoire/src/views/utils/Constants.dart';
@@ -18,7 +20,7 @@ class _DashboardState extends State<Dashboard> {
       appBar: AppBar(
         title: Text(
           "Liste des patients",
-          style: TextStyle(fontFamily: 'Poppins'),
+          style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.black.withOpacity(0.7),
       ),
@@ -63,7 +65,7 @@ class _DashboardState extends State<Dashboard> {
                 subtitle: Text(
                   "Stable",
                   style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font100),
+                      fontFamily: 'Poppins', fontWeight: Constants.font600),
                 ),
               ),
               ListTile(
@@ -95,7 +97,7 @@ class _DashboardState extends State<Dashboard> {
                 subtitle: Text(
                   "Stable",
                   style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font100),
+                      fontFamily: 'Poppins', fontWeight: Constants.font600),
                 ),
               ),
               ListTile(
@@ -127,7 +129,7 @@ class _DashboardState extends State<Dashboard> {
                 subtitle: Text(
                   "Stable",
                   style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font100),
+                      fontFamily: 'Poppins', fontWeight: Constants.font600),
                 ),
               ),
               ListTile(
@@ -159,7 +161,7 @@ class _DashboardState extends State<Dashboard> {
                 subtitle: Text(
                   "Stable",
                   style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font100),
+                      fontFamily: 'Poppins', fontWeight: Constants.font600),
                 ),
               ),
               ListTile(
@@ -191,7 +193,7 @@ class _DashboardState extends State<Dashboard> {
                 subtitle: Text(
                   "Stable",
                   style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font100),
+                      fontFamily: 'Poppins', fontWeight: Constants.font600),
                 ),
               ),
             ],
@@ -206,8 +208,8 @@ class _DashboardState extends State<Dashboard> {
       forceActionsBelow: true,
       padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
       content: const Text(
-        'You have lost your internet connection. Make sure you are connected',
-        style: TextStyle(fontFamily: 'Poppins'),
+        'Bienvenue Dr John Doe. Consultez l\'état de vos patients en temps réel.',
+        style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w900),
       ),
       leading: CircleAvatar(
         backgroundColor: Colors.yellow,
@@ -216,8 +218,9 @@ class _DashboardState extends State<Dashboard> {
       actions: [
         FlatButton(
           child: const Text(
-            'DISMISS',
-            style: TextStyle(fontFamily: 'Poppins'),
+            'FERMER',
+            style:
+                TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold),
           ),
           onPressed: () {
             setState(() {
