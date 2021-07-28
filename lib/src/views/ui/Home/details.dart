@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+
 import 'package:memoire/src/views/utils/Constants.dart';
 
 class Details extends StatefulWidget {
@@ -30,10 +31,12 @@ class _DetailsState extends State<Details> {
               children: <Widget>[
                 _buildheader(),
                 SizedBox(
-                    height: MediaQuery.of(context).orientation ==
-                            Orientation.portrait
-                        ? size.height * 0.088
-                        : size.width * 0.088),
+                  height: 25,
+                  // height: MediaQuery.of(context).orientation ==
+                  //         Orientation.portrait
+                  //     ? size.height * 0.088
+                  //     : size.width * 0.088),),
+                ),
                 Row(
                   children: <Widget>[
                     Expanded(
@@ -48,23 +51,40 @@ class _DetailsState extends State<Details> {
                                       Orientation.portrait
                                   ? size.height * 0.334
                                   : size.width * 0.334,
-                              color: Colors.red,
+                              color: Colors.blue,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   ListTile(
-                                    title: Text(
-                                      "2",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline4
-                                          .copyWith(
-                                            color: Colors.white,
-                                            fontSize: 24.0,
-                                          ),
+                                    title: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.baseline,
+                                      textBaseline: TextBaseline.alphabetic,
+                                      children: [
+                                        Text(
+                                          "2",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline4
+                                              .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 24.0,
+                                              ),
+                                        ),
+                                        Text(
+                                          " bpm/min",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline4
+                                              .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13.0,
+                                              ),
+                                        ),
+                                      ],
                                     ),
                                     trailing: Icon(
-                                      FontAwesomeIcons.heart,
+                                      FontAwesome.heartbeat,
                                       color: Colors.white,
                                     ),
                                   ),
@@ -91,30 +111,47 @@ class _DetailsState extends State<Details> {
                                       Orientation.portrait
                                   ? size.height * 0.211
                                   : size.width * 0.211,
-                              color: Colors.grey.shade500,
+                              color: Colors.green,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   ListTile(
-                                    title: Text(
-                                      "2",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline4
-                                          .copyWith(
-                                            color: Colors.white,
-                                            fontSize: 24.0,
-                                          ),
+                                    title: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.baseline,
+                                      textBaseline: TextBaseline.alphabetic,
+                                      children: [
+                                        Text(
+                                          "2",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline4
+                                              .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 24.0,
+                                              ),
+                                        ),
+                                        Text(
+                                          " fois bougé",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline4
+                                              .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13.0,
+                                              ),
+                                        ),
+                                      ],
                                     ),
                                     trailing: Icon(
-                                      Icons.account_box,
+                                      Icons.directions_walk,
                                       color: Colors.white,
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 16.0),
                                     child: Text(
-                                      'Complément',
+                                      'Mouvement',
                                       style: Constants.whiteText,
                                     ),
                                   )
@@ -145,25 +182,42 @@ class _DetailsState extends State<Details> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   ListTile(
-                                    title: Text(
-                                      "hey",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline4
-                                          .copyWith(
-                                            color: Colors.white,
-                                            fontSize: 24.0,
-                                          ),
+                                    title: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.baseline,
+                                      textBaseline: TextBaseline.alphabetic,
+                                      children: [
+                                        Text(
+                                          "25",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline4
+                                              .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 24.0,
+                                              ),
+                                        ),
+                                        Text(
+                                          " °C",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline4
+                                              .copyWith(
+                                                color: Colors.white,
+                                                fontSize: 13.0,
+                                              ),
+                                        ),
+                                      ],
                                     ),
                                     trailing: Icon(
-                                      Icons.cloud_upload,
+                                      FontAwesome.thermometer_empty,
                                       color: Colors.white,
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 16.0),
                                     child: Text(
-                                      'Migrations',
+                                      'Température Corporelle',
                                       style: Constants.whiteText,
                                     ),
                                   )
@@ -188,25 +242,42 @@ class _DetailsState extends State<Details> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   ListTile(
-                                    title: Text(
-                                      "Hey",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline4
-                                          .copyWith(
-                                            fontSize: 24.0,
-                                            color: Colors.white,
-                                          ),
+                                    title: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.baseline,
+                                      textBaseline: TextBaseline.alphabetic,
+                                      children: [
+                                        Text(
+                                          "25",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline4
+                                              .copyWith(
+                                                fontSize: 24.0,
+                                                color: Colors.white,
+                                              ),
+                                        ),
+                                        Text(
+                                          " °F",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .headline4
+                                              .copyWith(
+                                                fontSize: 13.0,
+                                                color: Colors.white,
+                                              ),
+                                        ),
+                                      ],
                                     ),
                                     trailing: Icon(
-                                      Icons.hd,
+                                      FontAwesome.thermometer_quarter,
                                       color: Colors.white,
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 16.0),
                                     child: Text(
-                                      'Recrutements',
+                                      'Humidité',
                                       style: Constants.whiteText,
                                     ),
                                   ),

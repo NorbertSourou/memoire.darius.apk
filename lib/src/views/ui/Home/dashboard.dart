@@ -22,7 +22,7 @@ class _DashboardState extends State<Dashboard> {
           "Liste des patients",
           style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.black.withOpacity(0.7),
+        backgroundColor: Colors.blue.withOpacity(0.7),
       ),
       body: GestureDetector(
         onTap: () {
@@ -209,7 +209,7 @@ class _DashboardState extends State<Dashboard> {
       padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
       content: const Text(
         'Bienvenue Dr John Doe. Consultez l\'état de vos patients en temps réel.',
-        style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w900),
+        style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w600),
       ),
       leading: CircleAvatar(
         backgroundColor: Colors.yellow,
@@ -220,7 +220,7 @@ class _DashboardState extends State<Dashboard> {
           child: const Text(
             'FERMER',
             style:
-                TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold),
+                TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w600),
           ),
           onPressed: () {
             setState(() {
