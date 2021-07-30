@@ -2,7 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:memoire/src/logic/controllers/PatientController.dart';
 import 'package:memoire/src/views/utils/Constants.dart';
+import 'package:memoire/src/views/utils/widgets/Loader.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key key}) : super(key: key);
@@ -13,6 +16,7 @@ class Dashboard extends StatefulWidget {
 
 class _DashboardState extends State<Dashboard> {
   bool shouldBanner = true;
+  final ProductController productController = Get.put(ProductController());
 
   @override
   Widget build(BuildContext context) {
@@ -31,174 +35,181 @@ class _DashboardState extends State<Dashboard> {
             currentFocus.unfocus();
           }
         },
-        child: SafeArea(
-          child: ListView(
-            padding: EdgeInsets.only(bottom: 10),
-            children: <Widget>[
-              if (shouldBanner) banner(),
-              ListTile(
-                onTap: () {
-                  debugPrint("hi man");
-                },
-                leading: CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white,
-                  child: new Text(
-                    "J",
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 20,
-                        fontWeight: Constants.font400),
+        child: Obx(() {
+          if (productController.isLoading.value)
+            return SafeArea(
+              child: loading(enabled: true),
+            );
+          else
+            return SafeArea(
+              child: ListView(
+                padding: EdgeInsets.only(bottom: 10),
+                children: <Widget>[
+                  if (shouldBanner) banner(),
+                  ListTile(
+                    onTap: () {
+                      debugPrint("hi man");
+                    },
+                    leading: CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
+                      child: new Text(
+                        "J",
+                        style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 20,
+                            fontWeight: Constants.font400),
+                      ),
+                    ),
+                    trailing: Text(
+                      "Lit n°1",
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: Constants.font400),
+                    ),
+                    title: Text(
+                      productController.productList[1].title,
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: Constants.font400),
+                    ),
+                    subtitle: Text(
+                      "Stable",
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: Constants.font600),
+                    ),
                   ),
-                ),
-                trailing: Text(
-                  "Lit n°1",
-                  style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font400),
-                ),
-                title: Text(
-                  "John Doe",
-                  style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font400),
-                ),
-                subtitle: Text(
-                  "Stable",
-                  style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font600),
-                ),
-              ),
-              ListTile(
-                onTap: () {
-                  debugPrint("hi man");
-                },
-                leading: CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white,
-                  child: new Text(
-                    "J",
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 20,
-                        fontWeight: Constants.font400),
+                  ListTile(
+                    onTap: () {
+                      debugPrint("hi man");
+                    },
+                    leading: CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
+                      child: new Text(
+                        "J",
+                        style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 20,
+                            fontWeight: Constants.font400),
+                      ),
+                    ),
+                    trailing: Text(
+                      "Lit n°1",
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: Constants.font400),
+                    ),
+                    title: Text(
+                      "John Doe",
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: Constants.font400),
+                    ),
+                    subtitle: Text(
+                      "Stable",
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: Constants.font600),
+                    ),
                   ),
-                ),
-                trailing: Text(
-                  "Lit n°1",
-                  style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font400),
-                ),
-                title: Text(
-                  "John Doe",
-                  style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font400),
-                ),
-                subtitle: Text(
-                  "Stable",
-                  style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font600),
-                ),
-              ),
-              ListTile(
-                onTap: () {
-                  debugPrint("hi man");
-                },
-                leading: CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white,
-                  child: new Text(
-                    "J",
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 20,
-                        fontWeight: Constants.font400),
+                  ListTile(
+                    onTap: () {
+                      debugPrint("hi man");
+                    },
+                    leading: CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
+                      child: new Text(
+                        "J",
+                        style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 20,
+                            fontWeight: Constants.font400),
+                      ),
+                    ),
+                    trailing: Text(
+                      "Lit n°1",
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: Constants.font400),
+                    ),
+                    title: Text(
+                      "John Doe",
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: Constants.font400),
+                    ),
+                    subtitle: Text(
+                      "Stable",
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: Constants.font600),
+                    ),
                   ),
-                ),
-                trailing: Text(
-                  "Lit n°1",
-                  style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font400),
-                ),
-                title: Text(
-                  "John Doe",
-                  style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font400),
-                ),
-                subtitle: Text(
-                  "Stable",
-                  style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font600),
-                ),
-              ),
-              ListTile(
-                onTap: () {
-                  debugPrint("hi man");
-                },
-                leading: CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white,
-                  child: new Text(
-                    "J",
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 20,
-                        fontWeight: Constants.font400),
+                  ListTile(
+                    onTap: () {
+                      debugPrint("hi man");
+                    },
+                    leading: CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
+                      child: new Text(
+                        "J",
+                        style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 20,
+                            fontWeight: Constants.font400),
+                      ),
+                    ),
+                    trailing: Text(
+                      "Lit n°1",
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: Constants.font400),
+                    ),
+                    title: Text(
+                      "John Doe",
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: Constants.font400),
+                    ),
+                    subtitle: Text(
+                      "Stable",
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: Constants.font600),
+                    ),
                   ),
-                ),
-                trailing: Text(
-                  "Lit n°1",
-                  style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font400),
-                ),
-                title: Text(
-                  "John Doe",
-                  style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font400),
-                ),
-                subtitle: Text(
-                  "Stable",
-                  style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font600),
-                ),
-              ),
-              ListTile(
-                onTap: () {
-                  debugPrint("hi man");
-                },
-                leading: CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.blue,
-                  foregroundColor: Colors.white,
-                  child: new Text(
-                    "J",
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 20,
-                        fontWeight: Constants.font400),
+                  ListTile(
+                    onTap: () {
+                      debugPrint("hi man");
+                    },
+                    leading: CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
+                      child: new Text(
+                        "J",
+                        style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 20,
+                            fontWeight: Constants.font400),
+                      ),
+                    ),
+                    trailing: Text(
+                      "Lit n°1",
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: Constants.font400),
+                    ),
+                    title: Text(
+                      "John Doe",
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: Constants.font400),
+                    ),
+                    subtitle: Text(
+                      "Stable",
+                      style: TextStyle(
+                          fontFamily: 'Poppins', fontWeight: Constants.font600),
+                    ),
                   ),
-                ),
-                trailing: Text(
-                  "Lit n°1",
-                  style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font400),
-                ),
-                title: Text(
-                  "John Doe",
-                  style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font400),
-                ),
-                subtitle: Text(
-                  "Stable",
-                  style: TextStyle(
-                      fontFamily: 'Poppins', fontWeight: Constants.font600),
-                ),
+                ],
               ),
-            ],
-          ),
-        ),
+            );
+        }),
       ),
     );
   }
