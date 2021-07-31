@@ -28,7 +28,9 @@ class _ListtileState extends State<Listtile> {
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
         child: new Text(
-          "J",
+          productController.productList[widget._id].title
+              .substring(0, 1)
+              .capitalize,
           style: TextStyle(
               fontFamily: 'Poppins',
               fontSize: 20,
@@ -36,13 +38,11 @@ class _ListtileState extends State<Listtile> {
         ),
       ),
       trailing: Text(
-        "${productController.productList[widget._id].title}",
+        "Lit n° ${productController.productList[widget._id].id}",
         style: TextStyle(fontFamily: 'Poppins', fontWeight: Constants.font400),
       ),
       title: Text(
-        productController.productList[widget._id].title,
-
-        // productController.productList[1].title,
+        productController.productList[widget._id].title.substring(0, 7),
         style: TextStyle(fontFamily: 'Poppins', fontWeight: Constants.font400),
       ),
       subtitle: Text(
