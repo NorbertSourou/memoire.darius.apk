@@ -1,6 +1,6 @@
 # memoire
 
-A application to manage patients
+An application to manage patients
 
 ## Getting Started
 
