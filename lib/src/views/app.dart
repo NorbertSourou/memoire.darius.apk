@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:memoire/src/views/ui/Authentication/Login.dart';
 import 'package:memoire/src/views/ui/Error/NotFound.dart';
-import 'package:memoire/src/views/ui/Error/shimmer.dart';
 import 'package:memoire/src/views/ui/Home/dashboard.dart';
 import 'package:memoire/src/views/ui/Home/details.dart';
 
@@ -37,7 +36,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ],
       unknownRoute: GetPage(name: "/notfound", page: () => NotFound()),
-      home: Dashboard(),
+      home: LoginScreen(),
     );
   }
 }
