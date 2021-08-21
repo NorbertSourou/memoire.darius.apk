@@ -1,27 +1,34 @@
+import 'Lit.dart';
+import 'Medecin.dart';
+
 class Patients {
   Patients({
-    this.userId,
     this.id,
-    this.title,
-    this.completed,
+    this.idMedecin,
+    this.idLit,
+    this.nom,
+    this.prenoms,
   });
 
-  int userId;
   int id;
-  String title;
-  bool completed;
+  IdMedecin idMedecin;
+  IdLit idLit;
+  String nom;
+  String prenoms;
 
   factory Patients.fromJson(Map<String, dynamic> json) => Patients(
-        userId: json["userId"],
         id: json["id"],
-        title: json["title"],
-        completed: json["completed"],
+        idMedecin: IdMedecin.fromJson(json["idMedecin"]),
+        idLit: IdLit.fromJson(json["idLit"]),
+        nom: json["nom"],
+        prenoms: json["prenoms"],
       );
 
   Map<String, dynamic> toJson() => {
-        "userId": userId,
         "id": id,
-        "title": title,
-        "completed": completed,
+        "idMedecin": idMedecin.toJson(),
+        "idLit": idLit.toJson(),
+        "nom": nom,
+        "prenoms": prenoms,
       };
 }

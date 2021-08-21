@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-
+import 'package:get/get.dart';
+import 'package:memoire/src/logic/controllers/DetailsController.dart';
 import 'package:memoire/src/views/utils/Constants.dart';
 
 class Details extends StatefulWidget {
@@ -11,12 +12,14 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
+  DetailController detailController = Get.put(DetailController());
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text("John Doe"),
+        title: Text("John Doe ${Get.parameters['id']}"),
       ),
       backgroundColor: Colors.white,
       body: RefreshIndicator(
@@ -48,7 +51,7 @@ class _DetailsState extends State<Details> {
                             },
                             child: Container(
                               height: MediaQuery.of(context).orientation ==
-                                      Orientation.portrait
+                                  Orientation.portrait
                                   ? size.height * 0.334
                                   : size.width * 0.334,
                               color: Colors.blue,
@@ -58,7 +61,7 @@ class _DetailsState extends State<Details> {
                                   ListTile(
                                     title: Row(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.baseline,
+                                      CrossAxisAlignment.baseline,
                                       textBaseline: TextBaseline.alphabetic,
                                       children: [
                                         Text(
@@ -67,9 +70,9 @@ class _DetailsState extends State<Details> {
                                               .textTheme
                                               .headline4
                                               .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 24.0,
-                                              ),
+                                            color: Colors.white,
+                                            fontSize: 24.0,
+                                          ),
                                         ),
                                         Text(
                                           " bpm/min",
@@ -77,9 +80,9 @@ class _DetailsState extends State<Details> {
                                               .textTheme
                                               .headline4
                                               .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13.0,
-                                              ),
+                                            color: Colors.white,
+                                            fontSize: 13.0,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -101,14 +104,14 @@ class _DetailsState extends State<Details> {
                           ),
                           SizedBox(
                               height: MediaQuery.of(context).orientation ==
-                                      Orientation.portrait
+                                  Orientation.portrait
                                   ? MediaQuery.of(context).size.height * 0.018
                                   : MediaQuery.of(context).size.width * 0.018),
                           GestureDetector(
                             onTap: () {},
                             child: Container(
                               height: MediaQuery.of(context).orientation ==
-                                      Orientation.portrait
+                                  Orientation.portrait
                                   ? size.height * 0.211
                                   : size.width * 0.211,
                               color: Colors.green,
@@ -118,7 +121,7 @@ class _DetailsState extends State<Details> {
                                   ListTile(
                                     title: Row(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.baseline,
+                                      CrossAxisAlignment.baseline,
                                       textBaseline: TextBaseline.alphabetic,
                                       children: [
                                         Text(
@@ -127,9 +130,9 @@ class _DetailsState extends State<Details> {
                                               .textTheme
                                               .headline4
                                               .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 24.0,
-                                              ),
+                                            color: Colors.white,
+                                            fontSize: 24.0,
+                                          ),
                                         ),
                                         Text(
                                           " fois bougé",
@@ -137,9 +140,9 @@ class _DetailsState extends State<Details> {
                                               .textTheme
                                               .headline4
                                               .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13.0,
-                                              ),
+                                            color: Colors.white,
+                                            fontSize: 13.0,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -164,7 +167,7 @@ class _DetailsState extends State<Details> {
                     ),
                     SizedBox(
                         width: MediaQuery.of(context).orientation ==
-                                Orientation.portrait
+                            Orientation.portrait
                             ? MediaQuery.of(context).size.height * 0.018
                             : MediaQuery.of(context).size.width * 0.018),
                     Expanded(
@@ -174,7 +177,7 @@ class _DetailsState extends State<Details> {
                             onTap: () {},
                             child: Container(
                               height: MediaQuery.of(context).orientation ==
-                                      Orientation.portrait
+                                  Orientation.portrait
                                   ? size.height * 0.211
                                   : size.width * 0.211,
                               color: Colors.green,
@@ -184,7 +187,7 @@ class _DetailsState extends State<Details> {
                                   ListTile(
                                     title: Row(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.baseline,
+                                      CrossAxisAlignment.baseline,
                                       textBaseline: TextBaseline.alphabetic,
                                       children: [
                                         Text(
@@ -193,9 +196,9 @@ class _DetailsState extends State<Details> {
                                               .textTheme
                                               .headline4
                                               .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 24.0,
-                                              ),
+                                            color: Colors.white,
+                                            fontSize: 24.0,
+                                          ),
                                         ),
                                         Text(
                                           " °C",
@@ -203,9 +206,9 @@ class _DetailsState extends State<Details> {
                                               .textTheme
                                               .headline4
                                               .copyWith(
-                                                color: Colors.white,
-                                                fontSize: 13.0,
-                                              ),
+                                            color: Colors.white,
+                                            fontSize: 13.0,
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -227,14 +230,14 @@ class _DetailsState extends State<Details> {
                           ),
                           SizedBox(
                               height: MediaQuery.of(context).orientation ==
-                                      Orientation.portrait
+                                  Orientation.portrait
                                   ? MediaQuery.of(context).size.height * 0.018
                                   : MediaQuery.of(context).size.width * 0.018),
                           GestureDetector(
                             onTap: () {},
                             child: Container(
                               height: MediaQuery.of(context).orientation ==
-                                      Orientation.portrait
+                                  Orientation.portrait
                                   ? size.height * 0.334
                                   : size.width * 0.334,
                               color: Colors.blue,
@@ -244,7 +247,7 @@ class _DetailsState extends State<Details> {
                                   ListTile(
                                     title: Row(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.baseline,
+                                      CrossAxisAlignment.baseline,
                                       textBaseline: TextBaseline.alphabetic,
                                       children: [
                                         Text(
@@ -253,9 +256,9 @@ class _DetailsState extends State<Details> {
                                               .textTheme
                                               .headline4
                                               .copyWith(
-                                                fontSize: 24.0,
-                                                color: Colors.white,
-                                              ),
+                                            fontSize: 24.0,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                         Text(
                                           " °F",
@@ -263,9 +266,9 @@ class _DetailsState extends State<Details> {
                                               .textTheme
                                               .headline4
                                               .copyWith(
-                                                fontSize: 13.0,
-                                                color: Colors.white,
-                                              ),
+                                            fontSize: 13.0,
+                                            color: Colors.white,
+                                          ),
                                         ),
                                       ],
                                     ),

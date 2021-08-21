@@ -106,9 +106,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: ElevatedButton(
                     onPressed: () async {
                       authController.isLoading(true);
-                      await authController.loginMedecin(
-                          usernameController.text, passwordController.text);
-                      Get.toNamed("/dashboard");
+                      if (usernameController.text.trim().isNotEmpty &&
+                          usernameController.text.trim().isNotEmpty) {
+                        await authController.loginMedecin(
+                            usernameController.text.trim(),
+                            passwordController.text.trim());
+                      } else {
+                        Get.snackbar("Echec d'authentification",
+                            "Vérifiez que vous avez rempli tous les champs avant de continuer");
+                        authController.isLoading(false);
+                      }
                     },
                     child: authController.isLoading.value
                         ? SpinKitCircle(color: Colors.white)

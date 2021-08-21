@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:memoire/src/logic/controllers/PatientController.dart';
+import 'package:memoire/src/logic/services/shared_prefs_services/auth_prefs.dart';
 import 'package:memoire/src/views/utils/widgets/LisTile.dart';
 import 'package:memoire/src/views/utils/widgets/Loader.dart';
 
@@ -15,7 +16,6 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  bool shouldBanner = true;
   final ProductController productController = Get.put(ProductController());
 
   @override
@@ -45,8 +45,11 @@ class _DashboardState extends State<Dashboard> {
               child: ListView(
                 padding: EdgeInsets.fromLTRB(10,0,10, 10),
                 children: <Widget>[
-                  if (shouldBanner) banner(),
-                  for (int value = 0; value <= 20; value++) Listtile(id: value)
+                  if (productController.banner.value == "") banner(),
+                  for (int value = 0;
+                      value < (productController.productList.length);
+                      value++)
+                    Listtile(id: value)
                 ],
               ),
             );
@@ -54,7 +57,6 @@ class _DashboardState extends State<Dashboard> {
       ),
     );
   }
-
   MaterialBanner banner() {
     return MaterialBanner(
       forceActionsBelow: true,
@@ -76,7 +78,8 @@ class _DashboardState extends State<Dashboard> {
           ),
           onPressed: () {
             setState(() {
-              shouldBanner = false;
+              productController.banner("1");
+              AuthPrefs.setbannerValue();
             });
           },
         ),

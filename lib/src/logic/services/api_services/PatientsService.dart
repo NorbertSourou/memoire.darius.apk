@@ -1,15 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:memoire/src/logic/models/Patients.dart';
+import 'package:memoire/src/logic/services/shared_prefs_services/auth_prefs.dart';
 
 class PatientsService {
-  static Future<List<Patients>> fetch() async {
+  static fetch() async {
     Dio dio = new Dio();
-    var response = await dio.get("https://jsonplaceholder.typicode.com/todos");
-    if (response.statusCode == 200) {
-      List<Patients> patientslist = [];
-      response.data.forEach((k) => patientslist.add(Patients.fromJson(k)));
-      return patientslist;
-    }
+    dio.options.headers["Authorization"] =
+        "Bearer " + await AuthPrefs.getToken();
+    var response = await dio.get("http://192.168.157.135:8000/api/all_patient");
+    return response;
   }
 
   static Future<Patients> fetchpatient(int id) async {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:memoire/src/logic/controllers/WakeUpController.dart';
 import 'package:memoire/src/views/ui/Authentication/Login.dart';
 import 'package:memoire/src/views/ui/Error/NotFound.dart';
 import 'package:memoire/src/views/ui/Home/dashboard.dart';
@@ -11,11 +12,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final WakeUpController wakeUpController = Get.put(WakeUpController());
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: "Medical App",
-      initialRoute: "/",
+      initialRoute:
+          wakeUpController.token.toString() == "" ? "/" : "/dashboard",
       defaultTransition: Transition.zoom,
       getPages: [
         GetPage(
@@ -27,7 +31,7 @@ class _MyAppState extends State<MyApp> {
           page: () => Dashboard(),
         ),
         GetPage(
-          name: '/details',
+          name: '/details/:id',
           page: () => Details(),
         ),
         GetPage(
@@ -36,7 +40,8 @@ class _MyAppState extends State<MyApp> {
         ),
       ],
       unknownRoute: GetPage(name: "/notfound", page: () => NotFound()),
-      home: LoginScreen(),
+      home:
+          wakeUpController.token.toString() == "" ? LoginScreen() : Dashboard(),
     );
   }
 }

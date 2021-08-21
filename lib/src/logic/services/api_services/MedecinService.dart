@@ -7,12 +7,16 @@ class MedecinService {
     Dio dio = new Dio();
     var data = {"username": username, "password": password};
     var body = jsonEncode(data);
-    var response = await dio.post("http://192.168.1.56:8000/api/login_check",
-        data: body);
+    var response =
+        await dio.post("http://192.168.157.135:8000/api/login_check", data: body);
+    return response;
+  }
 
-    if (response.statusCode == 200) {
-      print(response.data);
-      // return response.data["token"];
-    }
+  static Future<dynamic> getConnectedMedecin() async {
+    Dio dio = new Dio();
+    var response = await dio.get(
+      "http://192.168.157.135:8000/api/api/medecin_connected",
+    );
+    return response;
   }
 }

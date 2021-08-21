@@ -21,14 +21,14 @@ class _ListtileState extends State<Listtile> {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        debugPrint("hi man");
+       Get.toNamed("/details/${productController.productList[widget._id].id}");
       },
       leading: CircleAvatar(
         radius: 30,
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
         child: new Text(
-          productController.productList[widget._id].title
+          productController.productList[widget._id].nom
               .substring(0, 1)
               .capitalize,
           style: TextStyle(
@@ -38,11 +38,13 @@ class _ListtileState extends State<Listtile> {
         ),
       ),
       trailing: Text(
-        "Lit n° ${productController.productList[widget._id].id}",
+        "Lit n° ${productController.productList[widget._id].idLit.numLit}",
         style: TextStyle(fontFamily: 'Poppins', fontWeight: Constants.font400),
       ),
       title: Text(
-        productController.productList[widget._id].title.substring(0, 7),
+        productController.productList[widget._id].nom +
+            " " +
+            productController.productList[widget._id].prenoms,
         style: TextStyle(fontFamily: 'Poppins', fontWeight: Constants.font400),
       ),
       subtitle: Text(
