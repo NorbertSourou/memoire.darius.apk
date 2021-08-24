@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:memoire/src/logic/controllers/WakeUpController.dart';
+import 'package:memoire/src/logic/controllers/bindings/network_binding.dart';
 import 'package:memoire/src/views/ui/Authentication/Login.dart';
 import 'package:memoire/src/views/ui/Error/NoConnection.dart';
 import 'package:memoire/src/views/ui/Error/NotFound.dart';
@@ -19,35 +20,36 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        title: "Medical App",
-        initialRoute: "/noresults",
-        // wakeUpController.token.toString() == "" ? "/" : "/dashboard",
-        defaultTransition: Transition.zoom,
-        getPages: [
-          GetPage(
-            name: '/',
-            page: () => LoginScreen(),
-          ),
-          GetPage(
-            name: '/dashboard',
-            page: () => Dashboard(),
-          ),
-          GetPage(
-            name: '/details/:id',
-            page: () => Details(),
-          ),
-          GetPage(
-            name: '/noconnection',
-            page: () => NoConnection(),
-          ),
-          GetPage(
-            name: '/noresults',
-            page: () => NoDataFound(),
-          ),
-        ],
-        unknownRoute: GetPage(name: "/notfound", page: () => NotFound()),
-        home: NoConnection()
-        // wakeUpController.token.toString() == "" ? LoginScreen() : Dashboard(),
-        );
+      title: "Medical App",
+      initialRoute:
+          wakeUpController.token.toString() == "" ? "/" : "/dashboard",
+      defaultTransition: Transition.rightToLeft,
+      initialBinding: NetworkBinding(),
+      getPages: [
+        GetPage(
+          name: '/',
+          page: () => LoginScreen(),
+        ),
+        GetPage(
+          name: '/dashboard',
+          page: () => Dashboard(),
+        ),
+        GetPage(
+          name: '/details/:id',
+          page: () => Details(),
+        ),
+        GetPage(
+          name: '/noconnection',
+          page: () => NoConnection(),
+        ),
+        GetPage(
+          name: '/noresults',
+          page: () => NoDataFound(),
+        ),
+      ],
+      unknownRoute: GetPage(name: "/notfound", page: () => NotFound()),
+      home:
+          wakeUpController.token.toString() == "" ? LoginScreen() : Dashboard(),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class NotFound extends StatelessWidget {
   const NotFound({Key key}) : super(key: key);
@@ -6,30 +7,91 @@ class NotFound extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          Image.asset(
-            "assets/notfound.png",
-            fit: BoxFit.cover,
-          ),
-          Positioned(
-            bottom: MediaQuery.of(context).size.height * 0.15,
-            left: MediaQuery.of(context).size.width * 0.3,
-            right: MediaQuery.of(context).size.width * 0.3,
-            child: FlatButton(
-              color: Color(0xFF6B92F2),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50)),
-              onPressed: () {},
-              child: Text(
-                "Go Home".toUpperCase(),
-                style: TextStyle(color: Colors.white),
+        body: SafeArea(
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                height: 400,
+                margin: EdgeInsets.symmetric(horizontal: 12),
+                child: SvgPicture.asset(
+                  "assets/notfound.svg",
+                  alignment: Alignment.center,
+                  fit: BoxFit.contain,
+                ),
               ),
-            ),
-          )
-        ],
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                child: Text(
+                  "Oops",
+                  style: TextStyle(
+                      fontSize: 30,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                child: Text(
+                  "The page you're looking for doesn't seem to exist...",
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 20,
+                      fontWeight: FontWeight.w300),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+                child: ElevatedButton(
+                  clipBehavior: Clip.hardEdge,
+                  onPressed: () {},
+                  child: Text(
+                    "Retry".toUpperCase(),
+                  ),
+                ),
+              ),
+              // FlatButton(
+              //   color: Colors.blue,
+              //   shape: RoundedRectangleBorder(
+              //     borderRadius: BorderRadius.circular(50),
+              //   ),
+              //   onPressed: () {},
+              //   child: Text(
+              //     "Retry".toUpperCase(),
+              //   ),
+              // )
+            ],
+          ),
+        ),
       ),
-    );
+    )
+
+        // Stack(
+        //   alignment: Alignment.center,
+        //   fit: StackFit.loose,
+        //   children: [
+        //     SvgPicture.asset(
+        //       "assets/nodata.svg",
+        //       fit: BoxFit.contain,
+        //     ),
+        //     Positioned(
+        //       bottom: 100,
+        //       left: 30,
+        //       child: FlatButton(
+        //         color: Colors.blue,
+        //         shape: RoundedRectangleBorder(
+        //           borderRadius: BorderRadius.circular(50),
+        //         ),
+        //         onPressed: () {},
+        //         child: Text("Retry".toUpperCase()),
+        //       ),
+        //     )
+        //   ],
+        // ),
+        );
   }
 }

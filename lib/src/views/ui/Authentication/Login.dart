@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:memoire/src/logic/controllers/AuthController.dart';
+import 'package:memoire/src/logic/controllers/network_controller.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
@@ -13,6 +14,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final AuthController authController = Get.put(AuthController());
+  final NetworkController _networkController = Get.find<NetworkController>();
+
   final TextEditingController passwordController = new TextEditingController();
   final TextEditingController usernameController = new TextEditingController();
 
@@ -105,6 +108,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () async {
+                      if (_networkController.connectionType.value == 0)
+                        print("youre are not connected");
+                      else
+                        print("you're connected");
+
                       authController.isLoading(true);
                       if (usernameController.text.trim().isNotEmpty &&
                           usernameController.text.trim().isNotEmpty) {
