@@ -36,23 +36,33 @@ class _DashboardState extends State<Dashboard> {
           }
         },
         child: Obx(() {
-          if (productController.isLoading.value)
+          if (productController.isLoading.value == "loading")
             return SafeArea(
               child: loading(enabled: true),
             );
-          else
-            return SafeArea(
-              child: ListView(
-                padding: EdgeInsets.fromLTRB(10,0,10, 10),
-                children: <Widget>[
-                  if (productController.banner.value == "") banner(),
-                  for (int value = 0;
-                      value < (productController.productList.length);
-                      value++)
-                    Listtile(id: value)
-                ],
+          else if (productController.isLoading.value == "completed")
+            return RefreshIndicator(
+              onRefresh: () {
+                return productController.fetchPatients();
+              },
+              child: SafeArea(
+                child: productController.productList.value.length == 0 ||
+                        productController.productList.value == null
+                    ? Container()
+                    : ListView(
+                        padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                        children: <Widget>[
+                          if (productController.banner.value == "") banner(),
+                          for (int value = 0;
+                              value < (productController.productList.length);
+                              value++)
+                            Listtile(id: value)
+                        ],
+                      ),
               ),
             );
+          else
+            return Container();
         }),
       ),
     );
@@ -62,12 +72,12 @@ class _DashboardState extends State<Dashboard> {
       forceActionsBelow: true,
       padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
       content: const Text(
-        'Bienvenue Dr John Doe. Consultez l\'état de vos patients en temps réel.',
+        'Bienvenue Docteur. Consultez l\'état de vos patients en temps réel.',
         style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w600),
       ),
       leading: CircleAvatar(
         backgroundColor: Colors.yellow,
-        child: Icon(Icons.cloud_off),
+        child: Icon(Icons.cloud),
       ),
       actions: [
         FlatButton(
