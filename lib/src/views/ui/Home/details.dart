@@ -27,6 +27,8 @@ class _DetailsState extends State<Details> {
         ),
         backgroundColor: Colors.white,
         body: Obx(() {
+
+
           if (detailController.isLoading.value == "loading")
             return SafeArea(
               child: DetailLoader(),

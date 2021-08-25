@@ -6,6 +6,9 @@ import 'package:get/get.dart';
 import 'package:memoire/src/logic/controllers/PatientController.dart';
 import 'package:memoire/src/logic/controllers/network_controller.dart';
 import 'package:memoire/src/logic/services/shared_prefs_services/auth_prefs.dart';
+import 'package:memoire/src/views/ui/Error/NoConnection.dart';
+import 'package:memoire/src/views/ui/Error/no_data_found.dart';
+import 'package:memoire/src/views/ui/Error/oher_error.dart';
 import 'package:memoire/src/views/utils/widgets/LisTile.dart';
 import 'package:memoire/src/views/utils/widgets/Loader.dart';
 
@@ -39,33 +42,43 @@ class _DashboardState extends State<Dashboard> {
           }
         },
         child: Obx(() {
-          if (productController.isLoading.value == "loading")
+          if (_networkController.connectionType.value == 0) {
             return SafeArea(
-              child: loading(enabled: true),
+              child: NoConnection(),
             );
-          else if (productController.isLoading.value == "completed")
-            return RefreshIndicator(
-              onRefresh: () {
-                return productController.fetchPatients();
-              },
-              child: SafeArea(
-                child: productController.productList.value.length == 0 ||
-                        productController.productList.value == null
-                    ? Container()
-                    : ListView(
-                        padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                        children: <Widget>[
-                          if (productController.banner.value == "") banner(),
-                          for (int value = 0;
-                              value < (productController.productList.length);
-                              value++)
-                            Listtile(id: value)
-                        ],
-                      ),
-              ),
-            );
-          else
-            return Container();
+          } else {
+            if (productController.isLoading.value == "loading") {
+              return SafeArea(
+                child: loading(enabled: true),
+              );
+            } else if (productController.isLoading.value == "completed")
+              return RefreshIndicator(
+                onRefresh: () {
+                  return productController.fetchPatients();
+                },
+                child: SafeArea(
+                  child: productController.productList.value.length == 0 ||
+                          productController.productList.value == null
+                      ? NoDataFound()
+                      : ListView(
+                          physics: const BouncingScrollPhysics(
+                              parent: AlwaysScrollableScrollPhysics()),
+                          padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                          children: <Widget>[
+                            if (productController.banner.value == "") banner(),
+                            for (int value = 0;
+                                value < (productController.productList.length);
+                                value++)
+                              Listtile(id: value)
+                          ],
+                        ),
+                ),
+              );
+            else
+              return SafeArea(
+                child: OtherError(),
+              );
+          }
         }),
       ),
     );
