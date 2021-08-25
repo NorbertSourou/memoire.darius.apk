@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:memoire/src/logic/controllers/PatientController.dart';
+import 'package:memoire/src/logic/controllers/network_controller.dart';
 import 'package:memoire/src/logic/services/shared_prefs_services/auth_prefs.dart';
 import 'package:memoire/src/views/utils/widgets/LisTile.dart';
 import 'package:memoire/src/views/utils/widgets/Loader.dart';
@@ -16,7 +17,9 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  final ProductController productController = Get.put(ProductController());
+  // final ProductController productController = Get.put(ProductController());
+  final NetworkController _networkController = Get.find<NetworkController>();
+  final ProductController productController = Get.find<ProductController>();
 
   @override
   Widget build(BuildContext context) {

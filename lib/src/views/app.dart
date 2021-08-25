@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:memoire/src/logic/controllers/WakeUpController.dart';
-import 'package:memoire/src/logic/controllers/bindings/network_binding.dart';
+import 'package:memoire/src/logic/controllers/bindings/auth_binding.dart';
+import 'package:memoire/src/logic/controllers/bindings/dashboard_binding.dart';
 import 'package:memoire/src/views/ui/Authentication/Login.dart';
 import 'package:memoire/src/views/ui/Error/NoConnection.dart';
 import 'package:memoire/src/views/ui/Error/NotFound.dart';
@@ -24,16 +25,17 @@ class _MyAppState extends State<MyApp> {
       initialRoute:
           wakeUpController.token.toString() == "" ? "/" : "/dashboard",
       defaultTransition: Transition.rightToLeft,
-      initialBinding: NetworkBinding(),
+      // initialBinding: NetworkBinding(),
       getPages: [
         GetPage(
           name: '/',
           page: () => LoginScreen(),
+          binding: AuthBinding(),
         ),
         GetPage(
           name: '/dashboard',
           page: () => Dashboard(),
-        ),
+            binding: DashboardBinding()),
         GetPage(
           name: '/details/:id',
           page: () => Details(),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:get/get.dart';
 import 'package:memoire/src/logic/controllers/DetailsController.dart';
+import 'package:memoire/src/logic/controllers/network_controller.dart';
 import 'package:memoire/src/views/utils/Constants.dart';
 import 'package:memoire/src/views/utils/widgets/details_loader.dart';
 
@@ -13,7 +14,9 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
-  DetailController detailController = Get.put(DetailController());
+  // DetailController detailController = Get.put(DetailController());
+  final NetworkController _networkController = Get.find<NetworkController>();
+  final DetailController detailController = Get.find<DetailController>();
 
   @override
   Widget build(BuildContext context) {

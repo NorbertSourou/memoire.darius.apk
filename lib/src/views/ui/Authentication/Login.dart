@@ -13,8 +13,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final AuthController authController = Get.put(AuthController());
+  // final AuthController authController = Get.put(AuthController());
   final NetworkController _networkController = Get.find<NetworkController>();
+  final AuthController authController = Get.find<AuthController>();
 
   final TextEditingController passwordController = new TextEditingController();
   final TextEditingController usernameController = new TextEditingController();
@@ -108,21 +109,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () async {
-                      if (_networkController.connectionType.value == 0)
-                        print("youre are not connected");
-                      else
-                        print("you're connected");
-
-                      authController.isLoading(true);
-                      if (usernameController.text.trim().isNotEmpty &&
-                          usernameController.text.trim().isNotEmpty) {
-                        await authController.loginMedecin(
-                            usernameController.text.trim(),
-                            passwordController.text.trim());
-                      } else {
+                      if (_networkController.connectionType.value == 0) {
                         Get.snackbar("Echec d'authentification",
-                            "Vérifiez que vous avez rempli tous les champs avant de continuer");
-                        authController.isLoading(false);
+                            "Vérifiez votre connexion internet.");
+                        print("youre are not connected");
+                      } else {
+                        authController.isLoading(true);
+                        if (usernameController.text.trim().isNotEmpty &&
+                            usernameController.text.trim().isNotEmpty) {
+                          await authController.loginMedecin(
+                              usernameController.text.trim(),
+                              passwordController.text.trim());
+                        } else {
+                          Get.snackbar("Echec d'authentification",
+                              "Vérifiez que vous avez rempli tous les champs avant de continuer");
+                          authController.isLoading(false);
+                        }
                       }
                     },
                     child: authController.isLoading.value
