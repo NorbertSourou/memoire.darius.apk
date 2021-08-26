@@ -7,7 +7,7 @@ class PatientsService {
     Dio dio = new Dio();
     dio.options.headers["Authorization"] =
         "Bearer " + await AuthPrefs.getToken();
-    var response = await dio.get("http://192.168.157.135:8000/api/all_patient");
+    var response = await dio.get("http://192.168.43.135:8000/api/all_patient");
     return response;
   }
 

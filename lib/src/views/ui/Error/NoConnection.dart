@@ -40,23 +40,14 @@ class _NoConnectionState extends State<NoConnection> {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Text(
-                "Your internet connection was interrupted, Please retry",
+                "Check your internet connection...",
                 style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 20,
                     fontWeight: FontWeight.w300),
               ),
             ),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
-              child: ElevatedButton(
-                clipBehavior: Clip.hardEdge,
-                onPressed: () {},
-                child: Text(
-                  "Retry".toUpperCase(),
-                ),
-              ),
-            ),
+
             // FlatButton(
             //   color: Colors.blue,
             //   shape: RoundedRectangleBorder(

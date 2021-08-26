@@ -13,9 +13,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // final AuthController authController = Get.put(AuthController());
-  final NetworkController _networkController = Get.find<NetworkController>();
-  final AuthController authController = Get.find<AuthController>();
+  final AuthController authController = Get.put(AuthController());
+  final NetworkController _networkController = Get.put(NetworkController());
+  // final NetworkController _networkController = Get.find<NetworkController>();
+  // final AuthController authController = Get.find<AuthController>();
 
   final TextEditingController passwordController = new TextEditingController();
   final TextEditingController usernameController = new TextEditingController();

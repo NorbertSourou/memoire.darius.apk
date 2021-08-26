@@ -20,9 +20,8 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  // final ProductController productController = Get.put(ProductController());
-  final NetworkController _networkController = Get.find<NetworkController>();
-  final ProductController productController = Get.find<ProductController>();
+  final ProductController productController = Get.put(ProductController());
+  final NetworkController _networkController = Get.put(NetworkController());
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +42,7 @@ class _DashboardState extends State<Dashboard> {
         },
         child: Obx(() {
           if (_networkController.connectionType.value == 0) {
+            productController.isLoading("established");
             return SafeArea(
               child: NoConnection(),
             );
@@ -61,8 +61,9 @@ class _DashboardState extends State<Dashboard> {
                           productController.productList.value == null
                       ? NoDataFound()
                       : ListView(
-                          physics: const BouncingScrollPhysics(
-                              parent: AlwaysScrollableScrollPhysics()),
+                    physics: const BouncingScrollPhysics(
+                            parent: AlwaysScrollableScrollPhysics(),
+                          ),
                           padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
                           children: <Widget>[
                             if (productController.banner.value == "") banner(),
@@ -74,9 +75,19 @@ class _DashboardState extends State<Dashboard> {
                         ),
                 ),
               );
-            else
+            else if (productController.isLoading.value == "established") {
+              productController.fetchPatients();
               return SafeArea(
-                child: OtherError(),
+                child: loading(enabled: true),
+              );
+            } else
+              return RefreshIndicator(
+                onRefresh: () {
+                  return productController.fetchPatients();
+                },
+                child: SafeArea(
+                  child: OtherError(),
+                ),
               );
           }
         }),

@@ -14,57 +14,22 @@ class ProductController extends GetxController {
   var isLoading = 'loading'.obs;
   var banner = "".obs;
   var productList = List<Patients>().obs;
-  var medecinconnected = IdMedecin().obs;
+
 
   @override
   onInit() async {
     banner(await AuthPrefs.getbannerValue());
     // getMedecin();
+
     fetchPatients();
 
     super.onInit();
   }
 
-  Future<void> getMedecin() async {
-    try {
-      isLoading('loading');
-      var medecin = await MedecinService.getConnectedMedecin();
-      if (medecin.statusCode == 200) {
-        medecinconnected(IdMedecin.fromJson(medecin));
-        isLoading('completed');
-      }
-    } on DioError catch (e) {
-      print(e.response.data);
-      isLoading('error');
-      switch (e.response.statusCode) {
-        case 400:
-          Get.snackbar("Echec de connexion",
-              "Veuillez vérifier votre connexion internet");
-          throw BadRequestException(e.response.statusCode);
-        case 401:
-          Get.snackbar("Echec de connexion", "Identifiants incorrects");
-          throw InvalidCreadentials(e.response.data);
-        case 403:
-          Get.snackbar("Echec de connexion",
-              "Un problème est survenu avec la connexion.Veuillez vérifier votre connexion internet");
-          throw UnauthorisedException(e.response.statusCode);
-        case 500:
-          Get.snackbar("Echec de connexion",
-              "Un problème est survenu lors de la connexion au serveur .Veuillez vérifier votre connexion internet");
-          throw UnauthorisedException(e.response.statusCode);
-        default:
-          throw FetchDataException(
-              'Un problème est survenu avec la connexion.Veuillez vérifier votre connexion internet');
-      }
-    } on SocketException {
-      isLoading('error');
-      Get.snackbar(
-          "Echec de connexion", "Veuillez vérifier votre connexion internet");
-      throw FetchDataException('No Internet connection');
-    }
-  }
+
 
   Future<void> fetchPatients() async {
+    print("hey");
     try {
       isLoading('loading');
       var patients = await PatientsService.fetch();
@@ -77,8 +42,7 @@ class ProductController extends GetxController {
         isLoading('completed');
       }
     } on DioError catch (e) {
-      print(e.response.data);
-      isLoading('error');
+           isLoading('error');
       switch (e.response.statusCode) {
         case 400:
           Get.snackbar("Echec de connexion",

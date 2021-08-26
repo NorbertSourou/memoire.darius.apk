@@ -44,16 +44,7 @@ class NotFound extends StatelessWidget {
                       fontWeight: FontWeight.w300),
                 ),
               ),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
-                child: ElevatedButton(
-                  clipBehavior: Clip.hardEdge,
-                  onPressed: () {},
-                  child: Text(
-                    "Retry".toUpperCase(),
-                  ),
-                ),
-              ),
+
               // FlatButton(
               //   color: Colors.blue,
               //   shape: RoundedRectangleBorder(
