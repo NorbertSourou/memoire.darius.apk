@@ -8,8 +8,7 @@ class AuthPrefs {
 
   static getToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    return prefs.getString("token") == null ? "login" : prefs.getString("token");
+    return prefs.getString("token");
   }
 
   static getbannerValue() async {
