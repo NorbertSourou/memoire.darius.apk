@@ -20,6 +20,7 @@ class NetworkController extends GetxController {
     initConnectivity();
     _streamSubscription =
         _connectivity.onConnectivityChanged.listen(_updateState);
+    super.onInit();
   }
 
   // a method to get which connection result, if you we connected to internet or no if yes then which network

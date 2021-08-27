@@ -2,11 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:memoire/src/logic/exceptions/appException.dart';
-import 'package:memoire/src/logic/models/Medecin.dart';
 import 'package:memoire/src/logic/models/Patients.dart';
-import 'package:memoire/src/logic/services/api_services/MedecinService.dart';
 import 'package:memoire/src/logic/services/api_services/PatientsService.dart';
 import 'package:memoire/src/logic/services/shared_prefs_services/auth_prefs.dart';
 
@@ -14,20 +13,13 @@ class ProductController extends GetxController {
   var isLoading = 'loading'.obs;
   var banner = "".obs;
   var productList = List<Patients>().obs;
-
-
   @override
   onInit() async {
     banner(await AuthPrefs.getbannerValue());
-    // getMedecin();
-
-    fetchPatients();
-
+    WidgetsBinding.instance.addPostFrameCallback((_) => fetchPatients());
+    // fetchPatients();
     super.onInit();
   }
-
-
-
   Future<void> fetchPatients() async {
     print("hey");
     try {
@@ -38,7 +30,6 @@ class ProductController extends GetxController {
         jsonDecode(patients.data)
             .forEach((k) => patientslist.add(Patients.fromJson(k)));
         productList.assignAll(patientslist);
-
         isLoading('completed');
       }
     } on DioError catch (e) {
@@ -71,7 +62,6 @@ class ProductController extends GetxController {
     }
   }
 }
-
 // Future<void> showPatient(int id) async {
 //   try {
 //     var patient = await PatientsService.fetchpatient(id);
