@@ -11,7 +11,7 @@ class MedecinService {
     var data = {"username": username, "password": password};
     var body = jsonEncode(data);
     var response =
-        await dio.post("http://192.168.1.44:8000/api/login_check", data: body);
+        await dio.post("http://192.168.43.135:8000/api/login_check", data: body);
     return response;
   }
 
@@ -21,7 +21,7 @@ class MedecinService {
     dio.options.headers["Authorization"] =
         "Bearer " + await AuthPrefs.getToken();
     var response = await dio.get(
-      "http://192.168.1.44:8000/api/medecin_connected",
+      "http://192.168.43.135:8000/api/medecin_connected",
     );
     return response;
   }

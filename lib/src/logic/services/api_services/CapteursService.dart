@@ -6,7 +6,7 @@ class CapteurService {
     Dio dio = new Dio();
     dio.options.headers["Authorization"] =
         "Bearer " + await AuthPrefs.getToken();
-    var response = await dio.get("http://192.168.1.44:8000/api/one_capteurs/$id");
+    var response = await dio.get("http://192.168.43.135:8000/api/one_capteurs/$id");
     return response;
   }
 }

@@ -15,14 +15,17 @@ class Details extends StatefulWidget {
   _DetailsState createState() => _DetailsState();
 }
 
-class _DetailsState extends State<Details> {
+class _DetailsState extends State<Details>  {
   DetailController detailController = Get.put(DetailController());
   NetworkController _networkController = Get.put(NetworkController());
+
+
   // final NetworkController _networkController = Get.find<NetworkController>();
   // final DetailController detailController = Get.find<DetailController>();
 
   @override
   Widget build(BuildContext context) {
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(

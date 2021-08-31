@@ -21,7 +21,6 @@ class ProductController extends GetxController {
     super.onInit();
   }
   Future<void> fetchPatients() async {
-    print("hey");
     try {
       isLoading('loading');
       var patients = await PatientsService.fetch();

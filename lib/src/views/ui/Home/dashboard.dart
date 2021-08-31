@@ -20,8 +20,8 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  final ProductController productController = Get.put(ProductController());
   final NetworkController _networkController = Get.put(NetworkController());
+  final ProductController productController = Get.put(ProductController());
 
   @override
   Widget build(BuildContext context) {
@@ -41,17 +41,18 @@ class _DashboardState extends State<Dashboard> {
           }
         },
         child: Obx(() {
-          if (_networkController.connectionType.value == 0) {
-            productController.isLoading("established");
-            return SafeArea(
-              child: NoConnection(),
-            );
-          } else {
+          // if (_networkController.connectionType.value == 0) {
+          //   productController.isLoading("established");
+          //   return SafeArea(
+          //     child: NoConnection(),
+          //   );
+          // } else {
             if (productController.isLoading.value == "loading") {
               return SafeArea(
                 child: loading(enabled: true),
               );
-            } else if (productController.isLoading.value == "completed")
+            }
+            else if (productController.isLoading.value == "completed")
               return RefreshIndicator(
                 onRefresh: () {
                   return productController.fetchPatients();
@@ -80,7 +81,8 @@ class _DashboardState extends State<Dashboard> {
               return SafeArea(
                 child: loading(enabled: true),
               );
-            } else
+            }
+            else
               return RefreshIndicator(
                 onRefresh: () {
                   return productController.fetchPatients();
@@ -89,7 +91,7 @@ class _DashboardState extends State<Dashboard> {
                   child: OtherError(),
                 ),
               );
-          }
+          // }
         }),
       ),
     );

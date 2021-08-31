@@ -18,8 +18,8 @@ class AuthController extends GetxController {
       var response = await MedecinService.getToken(username, password);
       if (response.statusCode == 200) {
         AuthPrefs.storeToken(response.data["token"]);
-        Get.toNamed(
-          "/dashboard",
+        Get.offNamed(
+          "dashboard",
         );
       }
     } on DioError catch (e) {

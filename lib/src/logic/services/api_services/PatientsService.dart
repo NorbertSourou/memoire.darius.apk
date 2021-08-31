@@ -7,10 +7,9 @@ class PatientsService {
     Dio dio = new Dio();
     dio.options.headers["Authorization"] =
         "Bearer " + await AuthPrefs.getToken();
-    var response = await dio.get("http://192.168.1.44:8000/api/all_patient");
+    var response = await dio.get("http://192.168.43.135:8000/api/all_patient");
     return response;
   }
-
   static Future<Patients> fetchpatient(int id) async {
     Dio dio = new Dio();
     var response =
