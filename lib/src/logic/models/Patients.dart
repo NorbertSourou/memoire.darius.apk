@@ -1,6 +1,4 @@
-import 'Lit.dart';
-import 'Medecin.dart';
-
+/*
 class Patients {
   Patients({
     this.id,
@@ -28,6 +26,33 @@ class Patients {
         "id": id,
         "idMedecin": idMedecin.toJson(),
         "idLit": idLit.toJson(),
+        "nom": nom,
+        "prenoms": prenoms,
+      };
+}*/
+class Patients {
+  Patients({
+    this.id,
+    this.numLit,
+    this.nom,
+    this.prenoms,
+  });
+
+  int id;
+  String nom;
+  String prenoms;
+  int numLit;
+
+  factory Patients.fromJson(Map<String, dynamic> json) => Patients(
+        id: json["id"],
+        numLit: json["numLit"],
+        nom: json["nom"],
+        prenoms: json["prenom"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "numLit": numLit,
         "nom": nom,
         "prenoms": prenoms,
       };

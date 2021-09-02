@@ -38,7 +38,7 @@ class _ListtileState extends State<Listtile> {
         ),
       ),
       trailing: Text(
-        "Lit n° ${productController.productList[widget._id].idLit.numLit}",
+        "Lit n° ${productController.productList[widget._id].numLit}",
         style: TextStyle(fontFamily: 'Poppins', fontWeight: Constants.font400),
       ),
       title: Text(

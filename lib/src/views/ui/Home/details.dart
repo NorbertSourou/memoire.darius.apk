@@ -48,7 +48,7 @@ class _DetailsState extends State<Details>  {
                   return detailController.fetchPatientsSensors();
                 },
                 child: SafeArea(
-                  child: detailController.sensor.value == null
+                  child: detailController.sensor == null
                       ? Container()
                       : SingleChildScrollView(
                           physics: const AlwaysScrollableScrollPhysics(),

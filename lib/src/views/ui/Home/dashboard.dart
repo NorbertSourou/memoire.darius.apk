@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:memoire/src/logic/controllers/PatientController.dart';
 import 'package:memoire/src/logic/controllers/network_controller.dart';
 import 'package:memoire/src/logic/services/shared_prefs_services/auth_prefs.dart';
-import 'package:memoire/src/views/ui/Error/NoConnection.dart';
 import 'package:memoire/src/views/ui/Error/no_data_found.dart';
 import 'package:memoire/src/views/ui/Error/oher_error.dart';
 import 'package:memoire/src/views/utils/widgets/LisTile.dart';
@@ -31,6 +30,22 @@ class _DashboardState extends State<Dashboard> {
           "Liste des patients",
           style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold),
         ),
+        actions: [
+          PopupMenuButton(
+              onSelected: (value) {
+                if (value == 1) productController.logout();
+              },
+              itemBuilder: (context) => [
+                    // PopupMenuItem(
+                    //   child: Text("Dr Ying Hakimi"),
+                    //   value: 1,
+                    // ),
+                    PopupMenuItem(
+                      child: Text("Déconnexion"),
+                      value: 1,
+                    )
+                  ])
+        ],
         backgroundColor: Colors.blue.withOpacity(0.7),
       ),
       body: GestureDetector(
@@ -59,22 +74,22 @@ class _DashboardState extends State<Dashboard> {
                 },
                 child: SafeArea(
                   child: productController.productList.value.length == 0 ||
-                          productController.productList.value == null
-                      ? NoDataFound()
-                      : ListView(
-                    physics: const BouncingScrollPhysics(
-                            parent: AlwaysScrollableScrollPhysics(),
-                          ),
-                          padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                          children: <Widget>[
-                            if (productController.banner.value == "") banner(),
-                            for (int value = 0;
-                                value < (productController.productList.length);
-                                value++)
-                              Listtile(id: value)
-                          ],
+                        productController.productList.value == null
+                    ? NoDataFound()
+                    : ListView(
+                        physics: const BouncingScrollPhysics(
+                          parent: AlwaysScrollableScrollPhysics(),
                         ),
-                ),
+                        padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                        children: <Widget>[
+                          if (productController.banner.value == "") banner(),
+                          for (int value = 0;
+                              value < (productController.productList.length);
+                              value++)
+                            Listtile(id: 0)
+                        ],
+                      ),
+              ),
               );
             else if (productController.isLoading.value == "established") {
               productController.fetchPatients();

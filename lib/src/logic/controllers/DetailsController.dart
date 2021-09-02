@@ -32,7 +32,7 @@ class DetailController extends GetxController with WidgetsBindingObserver {
     switch (state) {
       case AppLifecycleState.paused:
         timer?.cancel();
-        Get.offNamed("dashboard");
+        Get.back();
         print('paused state');
         break;
       case AppLifecycleState.resumed:
@@ -81,7 +81,7 @@ class DetailController extends GetxController with WidgetsBindingObserver {
       isLoading('loading');
       var sensors = await CapteurService.getSensors(Get.parameters["id"]);
       if (sensors.statusCode == 200) {
-        sensor(Sensors.fromJson(jsonDecode(sensors.data)));
+        sensor(Sensors.fromJson(jsonDecode(jsonEncode(sensors.data))));
         isLoading('completed');
       }
     } on DioError catch (e) {
@@ -120,7 +120,7 @@ class DetailController extends GetxController with WidgetsBindingObserver {
       // isLoading('loading');
       var sensors = await CapteurService.getSensors(Get.parameters["id"]);
       if (sensors.statusCode == 200) {
-        sensor(Sensors.fromJson(jsonDecode(sensors.data)));
+        sensor(Sensors.fromJson(jsonDecode(jsonEncode(sensors.data))));
         // isLoading('completed');
       }
     } on DioError catch (e) {
