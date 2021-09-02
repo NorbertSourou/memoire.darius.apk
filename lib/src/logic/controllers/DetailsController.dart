@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:memoire/src/logic/exceptions/appException.dart';
 import 'package:memoire/src/logic/models/sensors.dart';
 import 'package:memoire/src/logic/services/api_services/CapteursService.dart';
+import 'package:memoire/src/views/utils/widgets/snackbar.dart';
 
 class DetailController extends GetxController with WidgetsBindingObserver {
   var id = "".obs;
@@ -89,18 +90,18 @@ class DetailController extends GetxController with WidgetsBindingObserver {
       isLoading('error');
       switch (e.response.statusCode) {
         case 400:
-          Get.snackbar("Echec de connexion",
+          snackbar("Echec de connexion",
               "Veuillez vérifier votre connexion internet");
           throw BadRequestException(e.response.statusCode);
         case 401:
-          Get.snackbar("Echec de connexion", "Identifiants incorrects");
+          snackbar("Echec de connexion", "Identifiants incorrects");
           throw InvalidCreadentials(e.response.data);
         case 403:
-          Get.snackbar("Echec de connexion",
+          snackbar("Echec de connexion",
               "Un problème est survenu avec la connexion.Veuillez vérifier votre connexion internet");
           throw UnauthorisedException(e.response.statusCode);
         case 500:
-          Get.snackbar("Echec de connexion",
+          snackbar("Echec de connexion",
               "Un problème est survenu lors de la connexion au serveur .Veuillez vérifier votre connexion internet");
           throw UnauthorisedException(e.response.statusCode);
         default:
@@ -109,7 +110,7 @@ class DetailController extends GetxController with WidgetsBindingObserver {
       }
     } on SocketException {
       isLoading('error');
-      Get.snackbar(
+      snackbar(
           "Echec de connexion", "Veuillez vérifier votre connexion internet");
       throw FetchDataException('No Internet connection');
     }
@@ -128,18 +129,18 @@ class DetailController extends GetxController with WidgetsBindingObserver {
       isLoading('error');
       switch (e.response.statusCode) {
         case 400:
-          Get.snackbar("Echec de connexion",
+          snackbar("Echec de connexion",
               "Veuillez vérifier votre connexion internet");
           throw BadRequestException(e.response.statusCode);
         case 401:
-          Get.snackbar("Echec de connexion", "Identifiants incorrects");
+          snackbar("Echec de connexion", "Identifiants incorrects");
           throw InvalidCreadentials(e.response.data);
         case 403:
-          Get.snackbar("Echec de connexion",
+          snackbar("Echec de connexion",
               "Un problème est survenu avec la connexion.Veuillez vérifier votre connexion internet");
           throw UnauthorisedException(e.response.statusCode);
         case 500:
-          Get.snackbar("Echec de connexion",
+          snackbar("Echec de connexion",
               "Un problème est survenu lors de la connexion au serveur .Veuillez vérifier votre connexion internet");
           throw UnauthorisedException(e.response.statusCode);
         default:
@@ -148,7 +149,7 @@ class DetailController extends GetxController with WidgetsBindingObserver {
       }
     } on SocketException {
       isLoading('error');
-      Get.snackbar(
+      snackbar(
           "Echec de connexion", "Veuillez vérifier votre connexion internet");
       throw FetchDataException('No Internet connection');
     }

@@ -4,6 +4,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:memoire/src/views/utils/widgets/snackbar.dart';
 
 class NetworkController extends GetxController {
   //this variable 0 = No Internet, 1 = connected to WIFI ,2 = connected to Mobile Data.
@@ -50,7 +51,7 @@ class NetworkController extends GetxController {
         update();
         break;
       default:
-        Get.snackbar('Network Error', 'Failed to get Network Status');
+        snackbar('Network Error', 'Failed to get Network Status');
         break;
     }
   }

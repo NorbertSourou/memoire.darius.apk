@@ -11,6 +11,7 @@ import 'package:memoire/src/logic/models/Patients.dart';
 import 'package:memoire/src/logic/models/sensors.dart';
 import 'package:memoire/src/logic/services/api_services/PatientsService.dart';
 import 'package:memoire/src/logic/services/shared_prefs_services/auth_prefs.dart';
+import 'package:memoire/src/views/utils/widgets/snackbar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProductController extends GetxController with WidgetsBindingObserver {
@@ -43,11 +44,9 @@ class ProductController extends GetxController with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
      setTimer(false);
     super.onInit();
-    //  AwesomeNotifications().actionStream.listen((notification) {
-    //    // AwesomeNotifications().
+     AwesomeNotifications().actionStream.listen((notification) {
     // Get.toNamed(notification.body);
-    //
-    //  });
+     });
   }
 
   @override
@@ -84,7 +83,7 @@ class ProductController extends GetxController with WidgetsBindingObserver {
     AwesomeNotifications().actionSink.close();
     AwesomeNotifications().createdSink.close();
     AwesomeNotifications().cancelAll();
-    Get.off("/");
+    Get.offNamed("/");
   }
 
   Future<void> fetchPatients() async {
@@ -102,18 +101,18 @@ class ProductController extends GetxController with WidgetsBindingObserver {
       isLoading('error');
       switch (e.response.statusCode) {
         case 400:
-          Get.snackbar("Echec de connexion",
+          snackbar("Echec de connexion",
               "Veuillez vérifier votre connexion internet");
           throw BadRequestException(e.response.statusCode);
         case 401:
-          Get.snackbar("Echec de connexion", "Identifiants incorrects");
+          snackbar("Echec de connexion", "Identifiants incorrects");
           throw InvalidCreadentials(e.response.data);
         case 403:
-          Get.snackbar("Echec de connexion",
+          snackbar("Echec de connexion",
               "Un problème est survenu avec la connexion.Veuillez vérifier votre connexion internet");
           throw UnauthorisedException(e.response.statusCode);
         case 500:
-          Get.snackbar("Echec de connexion",
+          snackbar("Echec de connexion",
               "Un problème est survenu lors de la connexion au serveur .Veuillez vérifier votre connexion internet");
           throw UnauthorisedException(e.response.statusCode);
         default:
@@ -122,7 +121,7 @@ class ProductController extends GetxController with WidgetsBindingObserver {
       }
     } on SocketException {
       isLoading('error');
-      Get.snackbar(
+      snackbar(
           "Echec de connexion", "Veuillez vérifier votre connexion internet");
       throw FetchDataException('No Internet connection');
     }
@@ -141,18 +140,18 @@ class ProductController extends GetxController with WidgetsBindingObserver {
       isLoading('error');
       switch (e.response.statusCode) {
         case 400:
-          Get.snackbar("Echec de connexion",
+          snackbar("Echec de connexion",
               "Veuillez vérifier votre connexion internet");
           throw BadRequestException(e.response.statusCode);
         case 401:
-          Get.snackbar("Echec de connexion", "Identifiants incorrects");
+          snackbar("Echec de connexion", "Identifiants incorrects");
           throw InvalidCreadentials(e.response.data);
         case 403:
-          Get.snackbar("Echec de connexion",
+          snackbar("Echec de connexion",
               "Un problème est survenu avec la connexion.Veuillez vérifier votre connexion internet");
           throw UnauthorisedException(e.response.statusCode);
         case 500:
-          Get.snackbar("Echec de connexion",
+          snackbar("Echec de connexion",
               "Un problème est survenu lors de la connexion au serveur .Veuillez vérifier votre connexion internet");
           throw UnauthorisedException(e.response.statusCode);
         default:
@@ -161,7 +160,7 @@ class ProductController extends GetxController with WidgetsBindingObserver {
       }
     } on SocketException {
       isLoading('error');
-      Get.snackbar(
+      snackbar(
           "Echec de connexion", "Veuillez vérifier votre connexion internet");
       throw FetchDataException('No Internet connection');
     }

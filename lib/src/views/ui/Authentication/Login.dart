@@ -4,6 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:memoire/src/logic/controllers/AuthController.dart';
 import 'package:memoire/src/logic/controllers/network_controller.dart';
+import 'package:memoire/src/views/utils/widgets/snackbar.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
@@ -128,8 +129,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 usernameController.text.trim(),
                                 passwordController.text.trim());
                           } else {
-                            Get.snackbar("Echec d'authentification",
-                                "Vérifiez que vous avez rempli tous les champs avant de continuer");
+                            snackbar("Echec d'authentification","Vérifiez que vous avez rempli tous les champs avant de continuer");
+
                             authController.isLoading(false);
                           }
                         }
