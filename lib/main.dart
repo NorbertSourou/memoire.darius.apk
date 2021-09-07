@@ -12,12 +12,12 @@ Future<void> main() async {
     'resource://drawable/res_notification_app_icon',
     [
       NotificationChannel(
-        enableVibration: true,
+       enableVibration: true,
         channelKey: 'basic_alert',
         channelName: 'Basic Patients Alert',
         defaultColor: Colors.teal,
         importance: NotificationImportance.High,
-        channelShowBadge: true,
+        // channelShowBadge: true,
       ),
       // NotificationChannel(
       //   channelKey: 'scheduled_channel',
@@ -31,9 +31,11 @@ Future<void> main() async {
   );
 
   WidgetsFlutterBinding.ensureInitialized();
+
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var token = prefs.getString('token');
   runApp(
+
     GetMaterialApp(
       title: "Medical App",
       initialRoute: token == null ? "/" : "dashboard",

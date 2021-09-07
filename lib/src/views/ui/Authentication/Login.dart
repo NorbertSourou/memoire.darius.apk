@@ -6,6 +6,8 @@ import 'package:memoire/src/logic/controllers/AuthController.dart';
 import 'package:memoire/src/logic/controllers/network_controller.dart';
 import 'package:memoire/src/views/utils/widgets/snackbar.dart';
 
+
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
 
@@ -16,6 +18,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final AuthController authController = Get.put(AuthController());
   final NetworkController _networkController = Get.put(NetworkController());
+
+
   // final NetworkController _networkController = Get.find<NetworkController>();
   // final AuthController authController = Get.find<AuthController>();
 
@@ -118,19 +122,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: ElevatedButton(
                       onPressed: () async {
                         if (_networkController.connectionType.value == 0) {
-                          Get.snackbar("Echec d'authentification",
+                         snackbar("Echec d'authentification",
                               "Vérifiez votre connexion internet.");
-                          print("youre are not connected");
+
                         } else {
                           authController.isLoading(true);
                           if (usernameController.text.trim().isNotEmpty &&
-                              usernameController.text.trim().isNotEmpty) {
+                              passwordController.text.trim().isNotEmpty) {
                             await authController.loginMedecin(
                                 usernameController.text.trim(),
                                 passwordController.text.trim());
                           } else {
                             snackbar("Echec d'authentification","Vérifiez que vous avez rempli tous les champs avant de continuer");
-
                             authController.isLoading(false);
                           }
                         }

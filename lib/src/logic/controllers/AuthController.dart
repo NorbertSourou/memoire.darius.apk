@@ -44,6 +44,7 @@ class AuthController extends GetxController {
                 "Un problème est survenu lors de la connexion au serveur .Veuillez vérifier votre connexion internet");
             throw UnauthorisedException(e.response.statusCode);
           default:
+
             throw FetchDataException(
                 'Un problème est survenu avec la connexion.Veuillez vérifier votre connexion internet');
         }

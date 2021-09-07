@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:memoire/src/logic/controllers/PatientController.dart';
 import 'package:memoire/src/logic/controllers/network_controller.dart';
 import 'package:memoire/src/logic/services/shared_prefs_services/auth_prefs.dart';
+import 'package:memoire/src/views/ui/Error/NoConnection.dart';
 import 'package:memoire/src/views/ui/Error/no_data_found.dart';
 import 'package:memoire/src/views/ui/Error/oher_error.dart';
 import 'package:memoire/src/views/utils/widgets/LisTile.dart';
@@ -36,10 +37,6 @@ class _DashboardState extends State<Dashboard> {
                 if (value == 1) productController.logout();
               },
               itemBuilder: (context) => [
-                    // PopupMenuItem(
-                    //   child: Text("Dr Ying Hakimi"),
-                    //   value: 1,
-                    // ),
                     PopupMenuItem(
                       child: Text("Déconnexion"),
                       value: 1,
@@ -56,48 +53,46 @@ class _DashboardState extends State<Dashboard> {
           }
         },
         child: Obx(() {
-          // if (_networkController.connectionType.value == 0) {
-          //   productController.isLoading("established");
-          //   return SafeArea(
-          //     child: NoConnection(),
-          //   );
-          // } else {
+          if (_networkController.connectionType.value == 0) {
+            productController.isLoading("established");
+            return SafeArea(
+              child: NoConnection(),
+            );
+          } else {
             if (productController.isLoading.value == "loading") {
               return SafeArea(
                 child: loading(enabled: true),
               );
-            }
-            else if (productController.isLoading.value == "completed")
+            } else if (productController.isLoading.value == "completed")
               return RefreshIndicator(
                 onRefresh: () {
                   return productController.fetchPatients();
                 },
                 child: SafeArea(
-                  child: productController.productList.value.length == 0 ||
-                        productController.productList.value == null
-                    ? NoDataFound()
-                    : ListView(
-                        physics: const BouncingScrollPhysics(
-                          parent: AlwaysScrollableScrollPhysics(),
+                  child: productController.productList.length == 0 ||
+                          productController.productList == null
+                      ? NoDataFound()
+                      : ListView(
+                          physics: const BouncingScrollPhysics(
+                            parent: AlwaysScrollableScrollPhysics(),
+                          ),
+                          padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                          children: <Widget>[
+                            if (productController.banner.value == "") banner(),
+                            for (int value = 0;
+                                value < (productController.productList.length);
+                                value++)
+                              Listtile(id: value)
+                          ],
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                        children: <Widget>[
-                          if (productController.banner.value == "") banner(),
-                          for (int value = 0;
-                              value < (productController.productList.length);
-                              value++)
-                            Listtile(id: 0)
-                        ],
-                      ),
-              ),
+                ),
               );
             else if (productController.isLoading.value == "established") {
               productController.fetchPatients();
               return SafeArea(
                 child: loading(enabled: true),
               );
-            }
-            else
+            } else
               return RefreshIndicator(
                 onRefresh: () {
                   return productController.fetchPatients();
@@ -106,7 +101,8 @@ class _DashboardState extends State<Dashboard> {
                   child: OtherError(),
                 ),
               );
-          // }
+            // }
+          }
         }),
       ),
     );

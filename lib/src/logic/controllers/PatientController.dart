@@ -25,12 +25,12 @@ class ProductController extends GetxController with WidgetsBindingObserver {
   Future<void> createPlantFoodNotification(String id) async {
     await AwesomeNotifications().createNotification(
       content: NotificationContent(
-        displayOnBackground: true,
+              displayOnBackground: true,
         displayOnForeground: true,
         id: DateTime.now().millisecondsSinceEpoch.remainder(100000),
         channelKey: 'basic_alert',
         title: 'Alerte danger',
-        body: 'Le patient est en danger $id',
+        body: 'Le patient $id est en danger',
         // bigPicture: 'asset://assets/notification_map.png',
         // notificationLayout: NotificationLayout.BigPicture,
       ),
@@ -41,6 +41,7 @@ class ProductController extends GetxController with WidgetsBindingObserver {
   onInit() async {
     banner(await AuthPrefs.getbannerValue());
     WidgetsBinding.instance.addPostFrameCallback((_) => fetchPatients());
+
     WidgetsBinding.instance.addObserver(this);
      setTimer(false);
     super.onInit();
@@ -59,13 +60,12 @@ class ProductController extends GetxController with WidgetsBindingObserver {
   void setTimer(bool isBackground) {
     // Cancelling previous timer, if there was one, and creating a new one
     timer?.cancel();
-    timer = Timer.periodic(Duration(seconds: 40), (t) async {
+    timer = Timer.periodic(Duration(seconds: 5), (t) async {
       // Not sending a request, if waiting for response
       if (!waitingForResponse) {
         waitingForResponse = true;
         await backfetchPatients();
-        print(sensorsList);
-        if (sensorsList.length != 0) {
+               if (sensorsList.length != 0) {
           for (var a in sensorsList) createPlantFoodNotification(a.idpatients);
         }
         //  creer ma méthode
