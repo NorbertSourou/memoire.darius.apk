@@ -50,7 +50,7 @@ Future<void> main() async {
           page: () => Dashboard(),
         ),
         GetPage(
-          name: '/details/:id',
+          name: '/details/:id/:name',
           page: () => Details(),
         ),
       ],

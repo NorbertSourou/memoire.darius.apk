@@ -33,7 +33,7 @@ class _NoDataFoundState extends State<NoDataFound> {
               Container(
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
                 child: Text(
-                  "No Results",
+                  "Pas de données",
                   style: TextStyle(
                       fontSize: 30,
                       fontFamily: 'Poppins',

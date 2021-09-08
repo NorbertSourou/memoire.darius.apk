@@ -31,7 +31,7 @@ class _OtherErrorState extends State<OtherError> {
             Container(
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
               child: Text(
-                "No Results",
+                "Pas de données",
                 style: TextStyle(
                     fontSize: 30,
                     fontFamily: 'Poppins',
@@ -41,7 +41,7 @@ class _OtherErrorState extends State<OtherError> {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Text(
-                "Sorry no data were found on this page from our server.",
+                "Désolé, aucune donnée trouvée de nos serveurs.",
                 style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 20,

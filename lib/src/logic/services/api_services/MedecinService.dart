@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:memoire/src/logic/services/shared_prefs_services/auth_prefs.dart';
 
 class MedecinService {
-  static const String api = "http://192.168.1.57:8000";
+  static const String api = "http://192.168.22.135:8000";
 
   static Future<dynamic> getToken(username, password) async {
     Dio dio = new Dio();

@@ -37,7 +37,7 @@ class NotFound extends StatelessWidget {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Text(
-                  "The page you're looking for doesn't seem to exist...",
+                  "Cette page n'existe pas...",
                   style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 20,

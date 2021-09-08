@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   Text(
-                    "Welcome Dr.",
+                    "Bienvenue Dr.",
                     style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 5,
                   ),
                   Text(
-                    "Sign in to continue",
+                    "Connectez-vous pour continuer",
                     style: TextStyle(
                       fontSize: 16,
                       letterSpacing: 0.5,
@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 40,
                   ),
                   Text(
-                    "Username",
+                    "Nom d'utilisateur",
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -152,7 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.snackbar("Mot de passe oublié", "En Maintenance");
+                      snackbar("Mot de passe oublié", "En Maintenance");
                     },
                     child: Container(
                       width: double.infinity,

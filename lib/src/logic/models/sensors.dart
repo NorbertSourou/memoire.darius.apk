@@ -5,7 +5,8 @@ class Sensors {
       this.humidite,
       this.temperatureCorporelle,
       this.mouvement,
-      this.idpatients});
+      this.idpatients,
+      this.lit});
 
   var temperatureAmbiante;
   var rythmeCardiaque;
@@ -13,6 +14,7 @@ class Sensors {
   var temperatureCorporelle;
   var idpatients;
   var mouvement;
+  var lit;
 
   factory Sensors.fromJson(Map<String, dynamic> json) => Sensors(
       temperatureAmbiante: json["temperature_ambiante"],
@@ -20,7 +22,9 @@ class Sensors {
       humidite: json["humidite"],
       temperatureCorporelle: json["temperature_corporelle"],
       mouvement: json["mouvement"],
-      idpatients: json["patients_id"]);
+      idpatients: json["patients_id"],
+      lit: json["lit"]
+  );
 
   Map<String, dynamic> toJson() =>
       {
@@ -30,5 +34,6 @@ class Sensors {
         "temperatureCorporelle": temperatureCorporelle,
         "mouvement": mouvement,
         "patients_id": idpatients,
+        "lit": lit,
       };
 }

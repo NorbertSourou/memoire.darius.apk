@@ -30,7 +30,7 @@ class _NoConnectionState extends State<NoConnection> {
             Container(
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
               child: Text(
-                "No Connection",
+                "Aucune connexion internet",
                 style: TextStyle(
                     fontSize: 30,
                     fontFamily: 'Poppins',
@@ -40,7 +40,7 @@ class _NoConnectionState extends State<NoConnection> {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Text(
-                "Check your internet connection...",
+                "Veuillez vérifiez votre connexion internet...",
                 style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 20,

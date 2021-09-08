@@ -36,18 +36,21 @@ class Patients {
     this.numLit,
     this.nom,
     this.prenoms,
+    this.etat,
   });
 
   int id;
   String nom;
   String prenoms;
   int numLit;
+  var etat;
 
   factory Patients.fromJson(Map<String, dynamic> json) => Patients(
         id: json["id"],
         numLit: json["numLit"],
         nom: json["nom"],
         prenoms: json["prenom"],
+        etat: json["etat"],
       );
 
   Map<String, dynamic> toJson() => {

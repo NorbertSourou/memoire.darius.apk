@@ -29,7 +29,7 @@ class _DetailsState extends State<Details>  {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-          title: Text("John Doe ${Get.parameters['id']}"),
+          title: Text("${Get.parameters['name']}"),
         ),
         backgroundColor: Colors.white,
         body: Obx(() {
@@ -335,7 +335,7 @@ class _DetailsState extends State<Details>  {
                                                             ),
                                                       ),
                                                       Text(
-                                                        " °F",
+                                                        " %",
                                                         style: Theme.of(context)
                                                             .textTheme
                                                             .headline4
