@@ -83,57 +83,66 @@ class _DetailsState extends State<Details>  {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: <Widget>[
-                                                ListTile(
-                                                  title: Row(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .baseline,
-                                                    textBaseline:
-                                                        TextBaseline.alphabetic,
-                                                    children: [
-                                                      Text(
-                                                        detailController
-                                                            .sensor
-                                                            .value
-                                                            .rythmeCardiaque
-                                                            .toString(),
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .headline4
-                                                            .copyWith(
-                                                              color:
-                                                                  Colors.white,
-                                                              fontSize: 24.0,
-                                                            ),
-                                                      ),
-                                                      Text(
-                                                        " bpm",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .headline4
-                                                            .copyWith(
-                                                              color:
-                                                                  Colors.white,
-                                                              fontSize: 13.0,
-                                                            ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  trailing: Icon(
-                                                    FontAwesome.heartbeat,
-                                                    color: Colors.white,
-                                                  ),
+                                              ListTile(
+                                                title: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .baseline,
+                                                  textBaseline:
+                                                      TextBaseline.alphabetic,
+                                                  children: [
+                                                    Text(
+                                                      detailController.sensor
+                                                          .value.rythmeCardiaque
+                                                          .toString(),
+                                                      style:
+                                                          Theme.of(context)
+                                                              .textTheme
+                                                              .headline4
+                                                              .copyWith(
+                                                                color: int.parse(detailController.sensor.value.rythmeCardiaque) <
+                                                                            50 ||
+                                                                        int.parse(detailController.sensor.value.rythmeCardiaque) >
+                                                                            100
+                                                                    ? Colors.red
+                                                                    : Colors
+                                                                        .white,
+                                                                fontSize: 24.0,
+                                                              ),
+                                                    ),
+                                                    Text(
+                                                      " bpm",
+                                                      style:
+                                                          Theme.of(context)
+                                                              .textTheme
+                                                              .headline4
+                                                              .copyWith(
+                                                                color: int.parse(detailController.sensor.value.rythmeCardiaque) <
+                                                                            50 ||
+                                                                        int.parse(detailController.sensor.value.rythmeCardiaque) >
+                                                                            100
+                                                                    ? Colors.red
+                                                                    : Colors
+                                                                        .white,
+                                                                fontSize: 13.0,
+                                                              ),
+                                                    ),
+                                                  ],
                                                 ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 16.0),
-                                                  child: Text(
-                                                    'Rythme Cardiaque',
-                                                    style: Constants.whiteText,
-                                                  ),
-                                                )
-                                              ],
+                                                trailing: Icon(
+                                                  FontAwesome.heartbeat,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 16.0),
+                                                child: Text(
+                                                  'Rythme Cardiaque',
+                                                  style: Constants.whiteText,
+                                                ),
+                                              )
+                                            ],
                                             ),
                                           ),
                                         ),
@@ -239,54 +248,64 @@ class _DetailsState extends State<Details>  {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: <Widget>[
-                                                ListTile(
-                                                  title: Row(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .baseline,
-                                                    textBaseline:
-                                                        TextBaseline.alphabetic,
-                                                    children: [
-                                                      Text(
-                                                        "${detailController.sensor.value.temperatureCorporelle}",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .headline4
-                                                            .copyWith(
-                                                              color:
-                                                                  Colors.white,
-                                                              fontSize: 24.0,
-                                                            ),
-                                                      ),
-                                                      Text(
-                                                        " °C",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .headline4
-                                                            .copyWith(
-                                                              color:
-                                                                  Colors.white,
-                                                              fontSize: 13.0,
-                                                            ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  trailing: Icon(
-                                                    FontAwesome
-                                                        .thermometer_empty,
-                                                    color: Colors.white,
-                                                  ),
+                                              ListTile(
+                                                title: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .baseline,
+                                                  textBaseline:
+                                                      TextBaseline.alphabetic,
+                                                  children: [
+                                                    Text(
+                                                      "${detailController.sensor.value.temperatureCorporelle}",
+                                                      style:
+                                                          Theme.of(context)
+                                                              .textTheme
+                                                              .headline4
+                                                              .copyWith(
+                                                                color: double.parse(detailController.sensor.value.temperatureCorporelle) <
+                                                                            36 ||
+                                                                        double.parse(detailController.sensor.value.temperatureCorporelle) >
+                                                                            38.55
+                                                                    ? Colors.red
+                                                                    : Colors
+                                                                        .white,
+                                                                fontSize: 24.0,
+                                                              ),
+                                                    ),
+                                                    Text(
+                                                      " °C",
+                                                      style:
+                                                          Theme.of(context)
+                                                              .textTheme
+                                                              .headline4
+                                                              .copyWith(
+                                                                color: double.parse(detailController.sensor.value.temperatureCorporelle) <
+                                                                            36 ||
+                                                                        double.parse(detailController.sensor.value.temperatureCorporelle) >
+                                                                            38.55
+                                                                    ? Colors.red
+                                                                    : Colors
+                                                                        .white,
+                                                                fontSize: 13.0,
+                                                              ),
+                                                    ),
+                                                  ],
                                                 ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 16.0),
-                                                  child: Text(
-                                                    'Température Corporelle',
-                                                    style: Constants.whiteText,
-                                                  ),
-                                                )
-                                              ],
+                                                trailing: Icon(
+                                                  FontAwesome.thermometer_empty,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 16.0),
+                                                child: Text(
+                                                  'Température Corporelle',
+                                                  style: Constants.whiteText,
+                                                ),
+                                              )
+                                            ],
                                             ),
                                           ),
                                         ),
@@ -299,89 +318,87 @@ class _DetailsState extends State<Details>  {
                                                         .height *
                                                     0.018
                                                 : MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.018),
-                                        GestureDetector(
-                                          onTap: () {},
-                                          child: Container(
-                                            height: MediaQuery.of(context)
-                                                        .orientation ==
-                                                    Orientation.portrait
-                                                ? size.height * 0.334
-                                                : size.width * 0.334,
-                                            color: Colors.blue,
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: <Widget>[
-                                                ListTile(
-                                                  title: Row(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .baseline,
-                                                    textBaseline:
-                                                        TextBaseline.alphabetic,
-                                                    children: [
-                                                      Text(
-                                                        "${detailController.sensor.value.humidite}",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .headline4
-                                                            .copyWith(
-                                                              fontSize: 24.0,
-                                                              color:
-                                                                  Colors.white,
-                                                            ),
-                                                      ),
-                                                      Text(
-                                                        " %",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .headline4
-                                                            .copyWith(
-                                                              fontSize: 13.0,
-                                                              color:
-                                                                  Colors.white,
-                                                            ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                  trailing: Icon(
-                                                    FontAwesome
-                                                        .thermometer_quarter,
-                                                    color: Colors.white,
-                                                  ),
+                                                      .size
+                                                      .width *
+                                                  0.018),
+                                      GestureDetector(
+                                        onTap: () {},
+                                        child: Container(
+                                          height: MediaQuery.of(context)
+                                                      .orientation ==
+                                                  Orientation.portrait
+                                              ? size.height * 0.334
+                                              : size.width * 0.334,
+                                          color: Colors.blue,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              ListTile(
+                                                title: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .baseline,
+                                                  textBaseline:
+                                                      TextBaseline.alphabetic,
+                                                  children: [
+                                                    Text(
+                                                      "${detailController.sensor.value.humidite}",
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .headline4
+                                                          .copyWith(
+                                                            fontSize: 24.0,
+                                                            color: Colors.white,
+                                                          ),
+                                                    ),
+                                                    Text(
+                                                      " %",
+                                                      style: Theme.of(context)
+                                                          .textTheme
+                                                          .headline4
+                                                          .copyWith(
+                                                            fontSize: 13.0,
+                                                            color: Colors.white,
+                                                          ),
+                                                    ),
+                                                  ],
                                                 ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 16.0),
-                                                  child: Text(
-                                                    'Humidité',
-                                                    style: Constants.whiteText,
-                                                  ),
+                                                trailing: Icon(
+                                                  FontAwesome
+                                                      .thermometer_quarter,
+                                                  color: Colors.white,
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 16.0),
+                                                child: Text(
+                                                  'Humidité',
+                                                  style: Constants.whiteText,
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ],
-                          ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ],
                         ),
-                ),
-              );
-            else
-              return SafeArea(
-                child: OtherError(),
-              );
-          }
-        }));
+                      ),
+              ),
+            );
+          else
+            return SafeArea(
+              child: OtherError(),
+            );
+        }
+      }),
+    );
   }
 
   Widget _buildheader() {
@@ -401,7 +418,17 @@ class _DetailsState extends State<Details>  {
           child: Center(
             child: Text(
               "${detailController.sensor.value.temperatureAmbiante} °C",
-              style: Theme.of(context).textTheme.headline4,
+              style: TextStyle(
+                  fontSize: 34,
+                  color: double.parse(detailController
+                                  .sensor.value.temperatureAmbiante) <
+                              20 ||
+                          double.parse(detailController
+                                  .sensor.value.temperatureAmbiante) >
+                              27
+                      ? Colors.red
+                      : Colors.grey.shade700),
+              // Theme.of(context).textTheme.headline4,
               textAlign: TextAlign.center,
             ),
           ),

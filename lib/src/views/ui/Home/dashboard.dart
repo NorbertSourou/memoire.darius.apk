@@ -116,8 +116,8 @@ class _DashboardState extends State<Dashboard> {
         style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w600),
       ),
       leading: CircleAvatar(
-        backgroundColor: Colors.yellow,
-        child: Icon(Icons.cloud),
+        backgroundColor: Colors.blue,
+        child: Icon(Icons.home_work,color: Colors.white,),
       ),
       actions: [
         FlatButton(
